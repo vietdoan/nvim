@@ -9,8 +9,12 @@ require("mason-lspconfig").setup({
     "jsonls",
     "yamlls",
     "stylua",
-    "gofmt",
-    "goimports",
   },
   automatic_installation = true,
+})
+
+require("mason-tool-installer").setup({
+  ensure_installed = {
+    "goimports",
+  },
 })

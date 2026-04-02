@@ -78,6 +78,7 @@ require("lazy").setup({
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
   },
+  { "WhoIsSethDaniel/mason-tool-installer.nvim" },
 
   { "hrsh7th/nvim-cmp" },
   { "hrsh7th/cmp-nvim-lsp" },
