@@ -28,8 +28,10 @@ require("lazy").setup({
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
 
-  { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  {
+    "ibhagwan/fzf-lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
 
   { "echasnovski/mini.nvim", version = false },
 

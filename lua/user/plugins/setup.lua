@@ -21,20 +21,22 @@ require("nvim-tree").setup({
   },
 })
 
-require("telescope").setup({
-  defaults = {
-    prompt_prefix = " ",
-    selection_caret = " ",
-    path_display = { "smart" },
-    file_ignore_patterns = { ".git/", "node_modules/", "dist/", "__pycache__/" },
+require("fzf-lua").setup({
+  winopts = {
+    height = 0.85,
+    width = 0.80,
+    preview = {
+      layout = "vertical",
+      vertical = "down:45%",
+    },
   },
-  pickers = {
-    find_files = { theme = "dropdown" },
-    live_grep = { theme = "ivy" },
+  files = {
+    fd_opts = "--color=never --type f --hidden --follow --exclude .git",
+  },
+  grep = {
+    rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096",
   },
 })
-
-require("telescope").load_extension("fzf")
 
 require("trouble").setup({
   position = "bottom",
