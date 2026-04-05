@@ -11,10 +11,7 @@ map("v", "<leader>Y", '"+y')
 map("v", "<leader>p", '"*p')
 map("v", "<leader>P", '"+p')
 
--- Neovim Config
-map("n", "<leader>ev", "<cmd>vsplit $MYVIMRC<CR>")
-map("n", "<leader>sv", "<cmd>source $MYVIMRC<CR>")
-map("n", "<leader>ep", "<cmd>vsplit ~/.config/nvim/lua/user/plugins.lua<CR>")
+
 
 -- NvimTree
 map("n", "<C-b>", "<cmd>NvimTreeToggle<CR>")
