@@ -102,7 +102,7 @@ map("n", "<leader>rr", "<cmd>RustRun<CR>")
 
 -- Terminal
 map("n", "<leader>tt", "<cmd>vsplit | terminal<CR>")
-map("t", "<Esc>", "<C-\\><C-n>")
+map("t", "<C-g>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Multiple Cursors
 map({"n", "x"}, "<C-j>", "<cmd>MultipleCursorsAddDown<CR>", { desc = "Add cursor and move down" })
@@ -115,3 +115,12 @@ map({"n", "x", "o"}, "s", "<cmd>HopWord<CR>", { desc = "Hop word" })
 map({"n", "x", "o"}, "S", "<cmd>HopChar1<CR>", { desc = "Hop char" })
 map({"n", "x", "o"}, "f", "<cmd>HopChar1<CR>", { desc = "Hop char forward" })
 map({"n", "x", "o"}, "F", "<cmd>HopChar2<CR>", { desc = "Hop char backward" })
+
+-- Opencode
+map({ "n", "x" }, "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode…" })
+map({ "n", "x" }, "<leader>ox", function() require("opencode").select() end, { desc = "Execute opencode action…" })
+map({ "n", "t" }, "<leader>ot", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
+map({ "n", "x" }, "go", function() return require("opencode").operator("@this ") end, { desc = "Add range to opencode", expr = true })
+map("n", "goo", function() return require("opencode").operator("@this ") .. "_" end, { desc = "Add line to opencode", expr = true })
+map("n", "<S-C-u>", function() require("opencode").command("session.half.page.up") end, { desc = "Scroll opencode up" })
+map("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "Scroll opencode down" })

@@ -7,7 +7,10 @@ if not vim.loop.fs_stat(lazypath) then
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable",
     lazypath,
-  })
+}, {
+  install = { colorscheme = { "molokai" } },
+  checker = { enabled = true },
+})
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -58,6 +61,35 @@ require("lazy").setup({
 
   { "github/copilot.vim" },
 
+  {
+    "nickjvandyke/opencode.nvim",
+    version = "*",
+    dependencies = {
+      {
+        "folke/snacks.nvim",
+        optional = true,
+        opts = {
+          input = {},
+          picker = {
+            actions = {
+              opencode_send = function(...) return require("opencode").snacks_picker_send(...) end,
+            },
+            win = {
+              input = {
+                keys = {
+                  ["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    config = function()
+      vim.o.autoread = true
+    end,
+  },
+
   { "rust-lang/rust.vim" },
 
   {
@@ -95,7 +127,4 @@ require("lazy").setup({
       require("aerial").setup()
     end,
   },
-}, {
-  install = { colorscheme = { "molokai" } },
-  checker = { enabled = true },
 })
