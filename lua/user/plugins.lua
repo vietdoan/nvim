@@ -87,30 +87,6 @@ require("lazy").setup({
     },
     config = function()
       vim.o.autoread = true
-      vim.defer_fn(function()
-        local ok, terminal = pcall(require, "opencode.terminal")
-        if ok then
-          local original_setup = terminal.setup
-          terminal.setup = function(win)
-            original_setup(win)
-            local buf = vim.api.nvim_win_get_buf(win)
-            vim.api.nvim_create_autocmd("TermRequest", {
-              buffer = buf,
-              once = true,
-              callback = function()
-                vim.defer_fn(function()
-                  if vim.api.nvim_buf_is_valid(buf) then
-                    local line = vim.api.nvim_buf_get_lines(buf, 0, 1, false)[1]
-                    if line and line:sub(1, 1) == "p" then
-                      vim.api.nvim_buf_set_lines(buf, 0, 1, false, { "" })
-                    end
-                  end
-                end, 50)
-              end,
-            })
-          end
-        end
-      end, 100)
     end,
   },
 
