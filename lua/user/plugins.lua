@@ -7,14 +7,14 @@ if not vim.loop.fs_stat(lazypath) then
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable",
     lazypath,
-}, {
-  install = { colorscheme = { "molokai" } },
-  checker = { enabled = true },
-})
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  install = { colorscheme = { "molokai" } },
+  checker = { enabled = true },
+  spec = {
   { "folke/lazy.nvim" },
   { "folke/neodev.nvim" },
 
@@ -126,5 +126,6 @@ require("lazy").setup({
     config = function()
       require("aerial").setup()
     end,
+  },
   },
 })
