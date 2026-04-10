@@ -104,9 +104,21 @@ map("n", "<leader>rr", "<cmd>RustRun<CR>")
 map("n", "<leader>tt", "<cmd>vsplit | terminal<CR>")
 map("t", "<C-g>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
+-- Smart Splits (navigation)
+map("n", "<C-h>", function() require("smart-splits").move_cursor_left() end, { desc = "Move to left split" })
+map("n", "<C-j>", function() require("smart-splits").move_cursor_down() end, { desc = "Move to below split" })
+map("n", "<C-k>", function() require("smart-splits").move_cursor_up() end, { desc = "Move to above split" })
+map("n", "<C-l>", function() require("smart-splits").move_cursor_right() end, { desc = "Move to right split" })
+
+-- Smart Splits (resizing)
+map("n", "<A-h>", function() require("smart-splits").resize_left() end, { desc = "Resize split left" })
+map("n", "<A-j>", function() require("smart-splits").resize_down() end, { desc = "Resize split down" })
+map("n", "<A-k>", function() require("smart-splits").resize_up() end, { desc = "Resize split up" })
+map("n", "<A-l>", function() require("smart-splits").resize_right() end, { desc = "Resize split right" })
+
 -- Multiple Cursors
-map({"n", "x"}, "<C-j>", "<cmd>MultipleCursorsAddDown<CR>", { desc = "Add cursor and move down" })
-map({"n", "x"}, "<C-k>", "<cmd>MultipleCursorsAddUp<CR>", { desc = "Add cursor and move up" })
+map({"n", "x"}, "<Leader>j", "<cmd>MultipleCursorsAddDown<CR>", { desc = "Add cursor and move down" })
+map({"n", "x"}, "<Leader>k", "<cmd>MultipleCursorsAddUp<CR>", { desc = "Add cursor and move up" })
 map({"n", "x"}, "<Leader>a", "<cmd>MultipleCursorsAddMatches<CR>", { desc = "Add cursors to cword" })
 map({"x"}, "<Leader>m", "<cmd>MultipleCursorsAddVisualArea<CR>", { desc = "Add cursors to visual area" })
 

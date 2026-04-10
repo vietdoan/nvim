@@ -122,6 +122,13 @@ require("lazy").setup({
   { "saadparwaiz1/cmp_luasnip" },
 
   {
+    "mrjones2014/smart-splits.nvim",
+    config = function()
+      require("smart-splits").setup()
+    end,
+  },
+
+  {
     "stevearc/aerial.nvim",
     config = function()
       require("aerial").setup()
