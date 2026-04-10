@@ -1,4 +1,13 @@
+local function nvim_tree_on_attach(bufnr)
+  local api = require("nvim-tree.api")
+  api.config.mappings.default_on_attach(bufnr)
+  -- Remap file info from C-k to C-i so smart-splits C-k works
+  vim.keymap.del("n", "<C-k>", { buffer = bufnr })
+  vim.keymap.set("n", "<C-i>", api.node.show_info_popup, { buffer = bufnr, desc = "Info" })
+end
+
 require("nvim-tree").setup({
+  on_attach = nvim_tree_on_attach,
   git = { enable = true },
   actions = {
     open_file = { quit_on_open = true },
