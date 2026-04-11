@@ -9,6 +9,14 @@ end
 require("nvim-tree").setup({
   on_attach = nvim_tree_on_attach,
   git = { enable = true },
+  filesystem_watchers = {
+    ignore_dirs = {
+      "TestResults",
+      "node_modules",
+      ".git",
+      ".vs",
+    },
+  },
   actions = {
     open_file = { quit_on_open = true },
   },

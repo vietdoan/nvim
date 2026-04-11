@@ -49,3 +49,4 @@ vim.g.mapleader = ","
 vim.g.loaded_netrwPlugin = 1
 vim.g.molokai_original = 1
 vim.g.rehash256 = 1
+

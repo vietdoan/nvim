@@ -52,7 +52,7 @@ map("n", "<leader>ff", "<cmd>FzfLua files<CR>")
 map("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>")
 map("n", "<leader>fb", "<cmd>FzfLua buffers<CR>")
 map("n", "<leader>fh", "<cmd>FzfLua help_tags<CR>")
-map("n", "<leader>a", "<cmd>FzfLua grep_cword<CR>")
+map("n", "<leader>a", "<cmd>FzfLua grep<CR>")
 
 -- Git (Fugitive)
 map("n", "<leader>gb", "<cmd>Git<CR>")
@@ -119,7 +119,7 @@ map("n", "<A-l>", function() require("smart-splits").resize_right() end, { desc 
 -- Multiple Cursors
 map({"n", "x"}, "<Leader>j", "<cmd>MultipleCursorsAddDown<CR>", { desc = "Add cursor and move down" })
 map({"n", "x"}, "<Leader>k", "<cmd>MultipleCursorsAddUp<CR>", { desc = "Add cursor and move up" })
-map({"n", "x"}, "<Leader>a", "<cmd>MultipleCursorsAddMatches<CR>", { desc = "Add cursors to cword" })
+map({"n", "x"}, "<Leader>A", "<cmd>MultipleCursorsAddMatches<CR>", { desc = "Add cursors to cword" })
 map({"x"}, "<Leader>m", "<cmd>MultipleCursorsAddVisualArea<CR>", { desc = "Add cursors to visual area" })
 
 -- Hop
@@ -129,10 +129,9 @@ map({"n", "x", "o"}, "f", "<cmd>HopChar1<CR>", { desc = "Hop char forward" })
 map({"n", "x", "o"}, "F", "<cmd>HopChar2<CR>", { desc = "Hop char backward" })
 
 -- Opencode
-map({ "n", "x" }, "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode…" })
+map({ "n", "x" }, "<leader>oa", function() require("opencode").ask("") end, { desc = "Ask opencode…" })
 map({ "n", "x" }, "<leader>ox", function() require("opencode").select() end, { desc = "Execute opencode action…" })
 map({ "n", "t" }, "<leader>ot", function() require("opencode").toggle() end, { desc = "Toggle opencode" })
 map({ "n", "x" }, "go", function() return require("opencode").operator("@this ") end, { desc = "Add range to opencode", expr = true })
 map("n", "goo", function() return require("opencode").operator("@this ") .. "_" end, { desc = "Add line to opencode", expr = true })
-map("n", "<S-C-u>", function() require("opencode").command("session.half.page.up") end, { desc = "Scroll opencode up" })
-map("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "Scroll opencode down" })
+
