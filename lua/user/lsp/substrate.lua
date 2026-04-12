@@ -3,11 +3,14 @@
 --- and GlobalPackageReferences that require special resolution for Roslyn LSP.
 local M = {}
 
---- Find the Substrate repo root by walking up looking for Directory.Build.props.
+--- Find the Substrate repo root by walking up looking for Packages.props.
+--- We use Packages.props (not Directory.Build.props) because some components
+--- have intermediate Directory.Build.props files that would stop the search
+--- too early (e.g., sources/dev/Sds/Directory.Build.props).
 --- @param start string
 --- @return string|nil
 function M.find_repo_root(start)
-  return vim.fs.root(start, "Directory.Build.props")
+  return vim.fs.root(start, "Packages.props")
 end
 
 --- Find the nearest .csproj directory by walking up from `start`.
