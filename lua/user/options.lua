@@ -35,16 +35,6 @@ opt.showcmd = true
 opt.timeoutlen = 400
 opt.redrawtime = 1500
 
--- Use cmd.exe as shell on Windows for performance (pwsh is slow)
-if vim.fn.has("win32") == 1 then
-  vim.o.shell = "cmd.exe"
-  vim.o.shellcmdflag = "/s /c"
-  vim.o.shellquote = ""
-  vim.o.shellxquote = ""
-  vim.o.shellpipe = ">%s 2>&1"
-  vim.o.shellredir = ">%s 2>&1"
-end
-
 vim.g.mapleader = ","
 vim.g.loaded_netrwPlugin = 1
 vim.g.molokai_original = 1

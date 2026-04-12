@@ -1,5 +1,8 @@
 require("user.lsp.mason")
 require("user.lsp.gopls")
+require("user.lsp.lua_ls")
+require("user.lsp.rust_analyzer")
+require("user.lsp.roslyn")
 require("user.lsp.cmp")
 require("user.plugins.setup")
 
@@ -15,9 +18,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, opts)
   end,
 })
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 vim.diagnostic.config({
   virtual_text = false,

@@ -67,7 +67,6 @@ require("lazy").setup({
     dependencies = {
       {
         "folke/snacks.nvim",
-        optional = true,
         opts = {
           input = {},
           picker = {
