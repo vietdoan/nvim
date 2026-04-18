@@ -25,8 +25,35 @@ require("lazy").setup({
     end,
   },
 
-  { "tpope/vim-fugitive" },
   { "lewis6991/gitsigns.nvim" },
+
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "esmuellert/codediff.nvim",
+      "ibhagwan/fzf-lua",
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("neogit").setup({
+        integrations = {
+          diffview = false,
+          codediff = true,
+          fzf_lua = true,
+        },
+        diff_viewer = "codediff",
+      })
+    end,
+  },
+
+  {
+    "esmuellert/codediff.nvim",
+    cmd = "CodeDiff",
+    config = function()
+      require("codediff").setup()
+    end,
+  },
 
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
@@ -97,14 +124,6 @@ require("lazy").setup({
   },
 
   { "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
-
-  {
-    "sindrets/diffview.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("diffview").setup()
-    end,
-  },
 
   {
     "williamboman/mason.nvim",
