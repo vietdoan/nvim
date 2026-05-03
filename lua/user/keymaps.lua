@@ -53,21 +53,17 @@ map("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>")
 map("n", "<leader>fb", "<cmd>FzfLua buffers<CR>")
 map("n", "<leader>fh", "<cmd>FzfLua help_tags<CR>")
 map("n", "<leader>a", "<cmd>FzfLua grep<CR>")
+map("n", "<leader>fs", "<cmd>FzfLua lsp_document_symbols<CR>")
 
--- Git (Neogit)
-map("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Open Neogit" })
-map("n", "<leader>gb", "<cmd>Neogit<CR>", { desc = "Neogit status" })
-map("n", "<leader>gc", "<cmd>Neogit commit<CR>", { desc = "Neogit commit" })
-map("n", "<leader>gp", "<cmd>Neogit push<CR>", { desc = "Neogit push" })
-map("n", "<leader>gP", "<cmd>Neogit pull<CR>", { desc = "Neogit pull" })
-map("n", "<leader>gl", "<cmd>Neogit log<CR>", { desc = "Neogit log" })
+-- Git (Fugitive)
+map("n", "<leader>gb", "<cmd>Git<CR>")
+map("n", "<leader>gc", "<cmd>Git commit<CR>")
+map("n", "<leader>gp", "<cmd>Git push<CR>")
 
--- CodeDiff
-map("n", "<leader>do", "<cmd>CodeDiff<CR>", { desc = "Open CodeDiff explorer" })
-map("n", "<leader>dc", "<cmd>tabclose<CR>", { desc = "Close CodeDiff tab" })
-map("n", "<leader>dh", "<cmd>CodeDiff history<CR>", { desc = "File history" })
-map("n", "<leader>dm", "<cmd>CodeDiff main<CR>", { desc = "Diff against main" })
-map("n", "<leader>dM", "<cmd>CodeDiff main...<CR>", { desc = "PR-style diff vs main" })
+-- Diffview
+map("n", "<leader>do", "<cmd>DiffviewOpen<CR>", { desc = "Open diff view" })
+map("n", "<leader>dc", "<cmd>DiffviewClose<CR>", { desc = "Close diff view" })
+map("n", "<leader>dh", "<cmd>DiffviewFileHistory<CR>", { desc = "File history" })
 map("n", "<leader>df", function()
   local filetype = vim.bo.filetype
   if filetype == "NvimTree" then
@@ -79,8 +75,8 @@ map("n", "<leader>df", function()
     vim.notify("No file to diff", vim.log.levels.WARN)
     return
   end
-  vim.cmd("CodeDiff history HEAD~20 " .. filepath)
-end, { desc = "File history of current file" })
+  vim.cmd("DiffviewOpen -- " .. filepath)
+end, { desc = "Diff against current file" })
 
 -- LSP
 map("n", "[g", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })

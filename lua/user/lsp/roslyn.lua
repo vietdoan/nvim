@@ -25,6 +25,11 @@ vim.lsp.config("roslyn_ls", {
   end,
   filetypes = { "cs" },
   capabilities = capabilities,
+  settings = {
+    ["csharp|projects"] = {
+      dotnet_enable_automatic_restore = false,
+    },
+  },
   root_dir = function(bufnr, on_dir)
     local buf_path = vim.api.nvim_buf_get_name(bufnr)
     local root = substrate.find_csproj_root(buf_path)
